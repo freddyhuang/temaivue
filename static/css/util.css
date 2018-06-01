@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+.body_div {
+	width: 1000px;
+	margin: 20px auto;
+	border: 1px solid #ccc;
+	min-height: 350px;
+}
+
+.span_adverttext {
+	font-size: 18px;
+	font-weight: bold;
+	color: #3E6DB3;
+	width: 243px;
+	height: 42px;
+	display: inline-block;
+	padding-left: 13px;
+	line-height: 42px;
+}
+
+.util_text {
+	font-weight: bold;
+	font-size: 14px;
+	padding: 20px;
+	line-height: 30px;
+}
+
+.util_text p {
+	font-size: 14px;
+	margin-left: 20px;
+}
+
+.util_text ul {
+	margin-left: 20px;
+}
+
+.util_text li {
+	margin-left: 30px;
+}

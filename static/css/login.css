@@ -1,0 +1,81 @@
+@charset "utf-8";
+
+.big{
+	text-align: center;
+	border: 1px solid #C7C7C7;
+	margin: 50px auto;
+	text-align: center;
+	width: 90%;
+	max-width: 500px;
+}
+
+.loginindexDiv{	
+	border: none;
+	margin: 10px auto;
+}
+
+.loginindex_title {
+	margin: 0 auto;
+	height: 50px;
+	border-bottom: 1px solid #bcbcbc;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin: 0 15px;
+}
+
+.loginindex_title div {
+	float: left;
+	height: 39px;
+	text-align: center;
+	font-size: 18px;
+	line-height: 39px;
+	margin-top: 9px;
+	cursor: pointer;
+}
+
+.loginindex_title_div_sel {
+	color: #FF6600;
+	border-bottom: 3px solid #3C6BB3;
+}
+
+.msgdiv{
+	width:100%;
+	text-align: center;
+	margin-top: 20px;
+ 	color: red;
+}
+
+.loginindex_div{
+	width: 100%;
+}
+.loginindex_div table {
+	margin: 0 auto;
+	line-height: 48px;
+	font-size: 14px;
+	margin-top: 10px;
+	text-align: left;
+}
+
+.loginindex_div table td {
+	border: none;
+}
+
+.rightdiv{
+	width:50%;
+	height:360px;
+	float: left;
+}
+.btnverifyemail{
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	font-size: 12px;
+	padding:3px;
+	background-color: #FF7000;
+	color: white;
+	cursor: pointer;
+}
+.receivemail{
+	display: none;
+}

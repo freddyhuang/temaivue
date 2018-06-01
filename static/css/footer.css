@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+.footer {
+	width: 100%;
+	height: 80px;
+	margin-bottom: 10px;
+}
+
+.footer_top {
+	width: 100%;
+	background-color: #3E6DB5;
+	height: 30px;
+	line-height: 30px;
+}
+
+.footer_top_div {
+	width: 100%;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.footer_top_div span {
+	color: #fff;
+}
+
+.footer_top_div a {
+	color: #fff;
+}
+
+.footer_line {
+	margin: 0 10px;
+}
+
+.footer_botton {
+	width: 100%;
+	text-align: center;
+}
+
+.footer_botton_div {
+	width: 100%;
+	margin: 0 auto;
+	color: #666;
+}
+.tamai_copyRight{
+	margin-top: 5px;
+}

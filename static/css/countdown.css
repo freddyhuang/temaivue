@@ -1,0 +1,46 @@
+@charset "utf-8";
+
+/* 时间倒数div */
+.countdownHolder {
+	width: 208px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.position {
+	display: inline-block;
+	height: 45px;
+	overflow: hidden;
+	position: relative;
+	width: 22px;
+}
+
+.digit {
+	position: absolute;
+	display: block;
+	width: 22px;
+	background-color: red;
+	text-align: center;
+	color: #fff;
+	line-height: 45px;
+	font-size: 24px;
+	font-weight: bold;
+	left: 0;
+}
+
+.digit_left {
+	border-radius: 8px 0 0 8px;
+}
+
+.digit_right {
+	border-radius: 0 8px 8px 0;
+}
+
+.countDiv {
+	display: inline-block;
+	width: 25px;
+	position: relative;
+	color: #666;
+	font-size: 14px;
+	top: -15px;
+}

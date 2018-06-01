@@ -1,0 +1,301 @@
+@charset "utf-8";
+
+.detailsTop {
+	width: 1000px;
+	height: 360px;
+	margin: 20px auto;
+}
+
+.detailsTop td {
+	border: none;
+}
+
+.detailsMsg {
+	width: 610px;
+	height: 360px;
+	margin-left: 30px;
+}
+
+.goodName {
+	color: #333;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.goodMsg {
+	color: #999;
+	height: 35px;
+	margin-top: 10px;
+}
+
+.goodDeadline {
+	margin-top: 20px;
+}
+
+.goodDeadline span {
+	color: #c90000;
+}
+
+.goodNum {
+	margin-top: 20px;
+}
+
+.goodNum table {
+	height: 32px;
+}
+
+.num_input {
+	width: 50px;
+	height: 28px;
+	text-align: center;
+	line-height: 30px;
+	margin-right: 5px;
+}
+
+.num_btn_top,.num_btn_bottom {
+	width: 23px;
+	height: 15px;
+	border: none;
+	cursor: pointer;
+}
+
+.num_btn_top {
+	background: url("/images/top.png") no-repeat;
+	margin-bottom: 1px;
+}
+
+.num_btn_bottom {
+	background: url("/images/bottom.png") no-repeat;
+	margin-top: 1px;
+}
+
+.goodPrice {
+	margin-top: 20px;
+}
+
+.price_span,.buybtn_span,.unbuybtn_span {
+	height: 70px;
+	display: inline-block;
+	text-align: center;
+	color: #fff;
+	vertical-align: middle;
+}
+
+.price_span {
+	width: 308px;
+	background-color: #FF4545;
+	font-size: 14px;
+	line-height: 65px;
+}
+
+.price_sign {
+	font-size: 20px;
+	color: #FFF000;
+	margin-left: 10px;
+}
+
+.now_price {
+	font-size: 30px;
+	color: #FFF000;
+	margin-right: 20px;
+}
+
+.old_price {
+	font-size: 14px;
+	text-decoration: line-through;
+}
+
+.buybtn_span {
+	width: 288px;
+	background-color: #FF9000;
+	border: 1px solid #FF7E00;
+	margin-left: 6px;
+	font-size: 30px;
+	line-height: 70px;
+	cursor: pointer;
+}
+
+.unbuybtn_span {
+	width: 288px;
+	background-color: #ccc;
+	border: 1px solid #FF7E00;
+	margin-left: 6px;
+	font-size: 30px;
+	line-height: 70px;
+}
+
+.unbuy {
+	width: 300px;
+	background-color: #ccc;
+	border: 1px solid #666;
+	font-size: 30px;
+	line-height: 70px;
+	height: 70px;
+	text-align: center;
+	color: #fff;
+	vertical-align: middle;
+}
+
+.goodLestTime {
+	width: 610px;
+	height: 82px;
+	background-color: #E4EBF5;
+	margin-top: 20px;
+}
+
+.goodLestTime table {
+	width: 96%;
+	height: 82px;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 14px;
+	color: #666;
+}
+
+.proper_num {
+	line-height: 82px;
+}
+
+.proper_num span {
+	color: #c90000;
+	margin: 0 5px;
+	font-size: 22px;
+}
+
+.details_table {
+	width: 1000px;
+	margin: 20px auto;
+	margin-top: 50px;
+}
+
+.details_table th {
+	height: 50px;
+	background-color: #fff;
+	font-size: 14px;
+}
+
+.details_table th div {
+	width: 100%;
+	height: 50px;
+	line-height: 50px;
+	cursor: pointer;
+}
+
+.select_th {
+	border-top: 5px solid #3E6DB4;
+	color: #3E6DB4;
+	height: 45px;
+}
+
+/** 商品详情 */
+.goodDetails {
+	width: 1000px;
+	padding: 10px;
+	box-sizing:border-box;
+}
+
+.goodDetails td {
+	border: none;
+}
+
+.details_span {
+	margin-left: 30px;
+}
+
+.goodDetails span {
+	font-size: 16px;
+}
+/** 累计评论 */
+.comment {
+	padding-top: 30px;
+	width: 1000px;
+	display: none;
+}
+
+.comment td {
+	width: 960px;
+	border-left: none;
+	border-right: none;
+	border-top: none;
+}
+
+.commentDiv {
+	margin-top: 20px;
+	margin-left: 20px
+}
+
+.commentDiv div {
+	font-size: 14px;
+}
+
+.commentUserName {
+	width: 170px;
+	float: left;
+}
+
+.commentTime {
+	width: 170px;
+	float: right;
+}
+
+.commentContent {
+	width: 800px;
+	float: left;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+/** 成交记录 */
+.orderRecord {
+	width: 1000px;
+	display: none;
+}
+
+.orderRecord td {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+
+.orderRecordTitle {
+	height: 35px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.orderRecordContent {
+	height: 80px;
+	text-align: center;
+}
+/** 服务详情 */
+.service {
+	width: 1000px;
+	display: none;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+.serviceDiv {
+	width: 90%;
+	margin: 0 auto;
+}
+.detail_div img{
+	max-width: 100%;
+}
+.scroll {
+	width: 80px;
+	height: 80px;
+	color: #fff;
+	line-height: 80px;
+	text-align: center;
+	position: fixed;
+	right: 80px;
+	bottom: 50px;
+	cursor: pointer;
+	font-size: 14px;
+	background: url("/images/backtop_icon.png") no-repeat;
+	background-position: -80px 0px;
+}
+.scroll:hover {
+	background-position: 0px 0px;
+}

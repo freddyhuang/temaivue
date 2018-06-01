@@ -1,0 +1,435 @@
+@charset "utf-8";
+
+/*支付成功页*/
+.success {
+	width: 1000px;
+	margin: 20px auto;
+	margin-bottom: 40px;
+}
+
+.successmessage {
+	width: 730px;
+	background-color: white;
+	height: auto;
+}
+
+.congratulations {
+	width: 730px;
+	text-align: center;
+	margin-top: 15px;
+}
+
+.congratulationstext {
+	font-size: 24px;
+	color: #666;
+}
+
+.congratulationsimg {
+	background-image: url("/images/success.png");
+	width: 103px;
+	height: 102px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.content {
+	width: 670px;
+	height: 250px;
+	margin-top: 20px;
+	margin-left: 30px;
+	margin-right: 30px;
+	margin-bottom: 20px;
+	background-color: #FAFAFA;
+	border: 1px solid #E3ECF5;
+	padding-top: 30px;
+}
+
+.contenttext {
+	margin-left: 50px;
+	font-size: 15px;
+	color: #666;
+}
+
+.colortext {
+	margin-left: 10px;
+	margin-right: 10px;
+	font-size: 15px;
+	color: #FE8100;
+}
+
+.lookbtn_span {
+	width: 213px;
+	background-color: #FF7F00;
+	border: 1px solid #FF7E00;
+	margin-left: 6px;
+	font-size: 20px;
+	line-height: 55px;
+	cursor: pointer;
+	height: 51px;
+	display: inline-block;
+	text-align: center;
+	color: #fff;
+	vertical-align: middle;
+}
+
+/*确认订单页*/
+.ordermessage {
+	width: 100%;
+	background-color: white;
+	height: auto;
+	padding-top: 25px;
+}
+
+.top {
+	width: 170px;
+	margin-left: 30px;
+	margin-right: 10px;
+	line-height: 43px;
+	color: #FF8000;
+	font-size: 17px;
+	float: left;
+}
+
+.orderMessage {
+	width: 90%;
+	margin: 0 auto;
+	border: 1px solid #E4EBF5;
+	padding: 20px 0 0 20px;
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+
+.orderMessage font {
+	font-size: 17px;
+	color: #333333;
+}
+
+.orderMessage span {
+	font-size: 15px;
+	color: #666666;
+}
+
+.messageDiv {
+	margin: 0px 10px;
+	float: left;
+}
+
+.messageDiv span {
+	height: 50px;
+	line-height: 50px;
+}
+
+/*支付方式 */
+.selectPayType {
+	width: 90%;
+	margin: 0 auto;
+	border: 1px solid #E4EBF5;
+	padding: 20px 0 0 20px;
+	margin-bottom: 20px;
+}
+
+.selectPayType ul li {
+	margin-top: 20px;
+}
+
+.selectPay {
+	
+}
+
+.selectBank {
+	border: 1px solid #FD8000;
+}
+
+.bank_p {
+	margin-bottom: 20px;
+}
+
+/*网上银行支付*/
+.onlineBanking {
+	margin-top: 10px;
+	display: none;
+}
+
+.bank {
+	width: 220px;
+	height: 55px;
+	margin-right: 20px;
+}
+
+.bankImg {
+	
+}
+
+/*信用卡直接付款*/
+.credit {
+	margin-top: 10px;
+	display: none;
+}
+
+/*支付宝平台*/
+.alipay {
+	margin-top: 10px;
+	display: none;
+}
+
+/*发送优惠券到手机 */
+.send {
+	height: 80px;
+	margin: 30px 20px 30px 0;
+	border-top: 1px solid #E4EBF5;
+	border-bottom: 1px solid #E4EBF5;
+}
+
+.phone_lable {
+	margin: 30px 0px;
+	font-size: 14px;
+	color: #666666;
+	display: inline-block;
+}
+
+/*确认订单 */
+.order {
+	width: 637px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+.orderTable {
+	text-align: center;
+	margin-top: 10px;
+	width: 100%;
+	border: 1px solid #E4EBF5;
+	margin-top: 10px;
+}
+
+.orderTable th {
+	font-weight: normal;
+	height: 40px;
+	border: none;
+	background-color: #E4EBF5;
+}
+
+.orderTable td {
+	border: none;
+	font-size: 14px;
+	color: #666666;
+	height: 40px
+}
+
+.allPay {
+	margin: 30px 40px 30px 0;
+	text-align: right;
+}
+.allpays{
+	text-align: right;
+	margin: 30px 0;
+}
+
+/*确认支付按钮*/
+.paybnt_div {
+	width: 100%;
+	height: 130px;
+}
+
+.pay_bnt {
+	width: 210px;
+	height: 60px;
+	line-height: 60px;
+	background-color: #FF7F00;
+	cursor: pointer;
+	margin: 20px 27px 0 0;
+	color: white;
+	text-align: center;
+	font-size: 20px;
+	display: inline-block;
+	float: right;
+	border: none;
+}
+
+.unpay_bnt {
+	width: 210px;
+	height: 60px;
+	line-height: 60px;
+	background-color: #ccc;
+	cursor: pointer;
+	margin: 20px 27px 0 0;
+	color: white;
+	text-align: center;
+	font-size: 20px;
+	display: inline-block;
+	float: right;
+	border: none;
+}
+
+.unbuy {
+	width: 210px;
+	background-color: #ccc;
+	font-size: 30px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	color: #fff;
+	float: right;
+	margin: 30px 27px 0 0;
+}
+
+.font_bule {
+	font-size: 17px;
+	color: #3C6DB2;
+	font-weight: bolder
+}
+
+.font_org {
+	margin: 0 25px 0 10px;
+	font-size: 20px;
+	font-weight: bold;
+	color: #FE7F00;
+}
+
+.paytype_font {
+	font-size: 14px;
+	color: #666666;
+	cursor: pointer
+}
+
+/*公用广告*/
+.td_advert {
+	width: 256px;
+	border: none;
+}
+
+.div_advertcontent {
+	margin-left: 20px;
+	width: 256px;
+}
+
+.span_adverttext {
+	font-size: 18px;
+	font-weight: bold;
+	color: #3E6DB3;
+	width: 243px;
+	height: 42px;
+	display: inline-block;
+	padding-left: 13px;
+	line-height: 42px;
+	border-top: 1px solid #E3ECF5;
+	border-bottom: 1px solid #E3ECF5;
+	*margin-top: -1px;
+	margin-top: 0;
+}
+
+.zuoche {
+	margin-top: 30px;
+	background-image: url("/images/zuoche.png");
+	width: 256px;
+	height: 94px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.xianquan {
+	margin-top: 30px;
+	background-image: url("/images/xianquan.png");
+	width: 256px;
+	height: 94px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.orderSuccess {
+	width: 100%;
+	margin: 0 auto;
+	background-color: #fff;
+	margin-bottom: 20px;
+	text-align: center;
+	line-height: 30px;
+	padding-top: 10px;
+}
+
+.orderSuccess p {
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.orderSuccess table {
+	margin: 0 auto;
+}
+
+.orderSuccess table td {
+	font-size: 18px;
+	font-weight: bold;
+	color: red;
+	border: none;
+}
+
+.failmsg {
+	width: 100%;
+	background-color: #fff;
+	height: 290px;
+	line-height: 290px;
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	color: #666;
+}
+
+.failmsg a {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.waitpay {
+	width: 480px;
+	height: 230px;
+	border: 1px solid #C7C7C7;
+	color: #656565;
+	z-index: 1000;
+	background-color: #fafafa;
+	position: fixed;
+	top: 25%;
+	left: 32%;
+	display: none;
+}
+
+.waitpay_div {
+	height: 310px;
+	width: 100%;
+}
+
+.waitpay_div table {
+	width: 90%;
+	line-height: 48px;
+	margin: 0 auto;
+	font-size: 14px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+.waitpay_div table td {
+	border: none;
+}
+
+.paywait_cz {
+	width: 200px;
+	height: 100px;
+	border: 4px solid #FBC7A9;
+	text-align: center;
+}
+
+.to_mon {
+	cursor: pointer;
+}
+
+.divMask {
+	background: #000000;
+	filter: progid:DXImageTransform.Microsoft.Alpha(style=3, opacity=50,
+		finishOpacity=50);
+	opacity: 0.5;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	display: none;
+}

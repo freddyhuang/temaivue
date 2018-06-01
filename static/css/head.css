@@ -1,0 +1,318 @@
+@charset "utf-8";
+a{
+	text-decoration: none;
+}
+.head {
+	width: 100%;
+	height: 110px;
+	border-bottom: 1px solid #BFCADC;
+	box-shadow: 0 0 5px #BFCADC;
+}
+
+.header {
+	background-color: #E4EBF5;
+	height: 30px;
+	color: #6692D9;
+	padding: 0 15px;
+}
+
+.header_div {
+	width: 100%;
+	margin: 0 auto;
+	height: 30px;
+	line-height: 30px;
+}
+@media only screen and (max-width: 767px) {
+  	.header_div {
+		display: flex;
+		display: -webkit-flex;
+		justify-content: space-between;
+	}
+	
+}
+
+.header_div_left {
+	float: left;
+}
+
+.header_div_left span {
+	margin-right: 20px;
+}
+
+.header_div_right {
+	float: right;
+}
+
+.header_div_right span {
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+.head_logo_div {
+	width: 100%;
+	margin: 0 auto;
+	height: 90px;
+}
+
+.head_logo {
+	width: 100%;
+	height: 90px;
+	background: url("../images/logo.png?12e1ss") no-repeat;
+	cursor: pointer;
+}
+@media only screen and (max-width: 767px) {
+  .head_logo {
+		background-size:200px 45px;
+	}
+}
+
+/** 登陆、注册 */
+.loginDiv {
+	width: 500px;
+	height: 450px;
+	border: 1px solid #C7C7C7;
+	box-shadow: 0 0 5px #ccc;
+	color: #656565;
+	display: none;
+	z-index: 999;
+	background-color: #fafafa;
+	position: fixed;
+	top: 20%;
+	left: 32%;
+}
+
+.loginDiv_title {
+	width: 90%;
+	margin: 0 auto;
+	height: 50px;
+	border-bottom: 1px solid #bcbcbc;
+}
+
+.loginDiv_title div {
+	float: left;
+	width: 160px;
+	height: 39px;
+	text-align: center;
+	font-size: 18px;
+	line-height: 39px;
+	margin-top: 9px;
+	cursor: pointer;
+}
+
+.close_div {
+	float: right;
+	width: 20px;
+	height: 20px;
+	border: 1px solid #ccc;
+	margin: 3px 3px 0 0;
+	text-align: center;
+	line-height: 18px;
+	font-size: 20px;
+	font-weight: bold;
+	color: #ff7000;
+	cursor: pointer;
+}
+
+.close_div:hover {
+	border: 1px solid #ff7000;
+}
+
+.loginDiv_title_div_sel {
+	color: #3C6BB3;
+	border-bottom: 3px solid #3C6BB3;
+}
+
+.login_div {
+	height: 310px;
+	width: 100%;
+	display: none;
+}
+
+.login_div table {
+	width: 70%;
+	margin: 0 auto;
+	line-height: 48px;
+	font-size: 14px;
+	margin-top: 20px;
+}
+
+.login_div table td {
+	border: none;
+}
+
+.register_title {
+	width: 65px;
+	padding-right: 20px;
+}
+
+.login_text_input,.login_num_input {
+	height: 25px;
+	border: 1px solid #ddd;
+	background-color: #fafafa;
+	padding: 0 10px;
+	line-height: 25px;
+}
+
+.login_text_input {
+	width: 160px;
+}
+
+.login_num_input {
+	width: 60px;
+}
+
+.login_btn {
+	width: 180px;
+	height: 40px;
+	background-color: #ff7000;
+	color: #fff;
+	border: none;
+	font-size: 14px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.phoneNum_btn {
+	background-color: #fff;
+	border: 1px solid #ff7000;
+	color: #ff7000;
+	height: 27px;
+	width: 95px;
+	cursor: pointer;
+}
+
+.verifyimage {
+	vertical-align: middle;
+}
+
+.nameTitle_msg {
+	min-width: 50px;
+	width: auto;
+	padding: 0 10px;
+	min-height: 25px;
+	height: auto;
+	color: #888;
+	border: 1px solid #ccc;
+	text-align: center;
+	line-height: 25px;
+	position: absolute;
+	z-index: 99999;
+	background: #FFFFFF;
+	display: none;
+	font-size: 14px;
+	margin-left: -150px;
+	*margin-top: 28px;
+	*margin-left: -330px;
+}
+.col_reg,.col_reg:hover,.col_reg:visited{
+	display:inline-block;
+	background-color:#ff6648;
+	border-radius:5px;
+	height:16px;
+	line-height:14px;
+	width:70px;
+	text-align:center;
+	color: white;
+	text-decoration: none;
+}
+.btnverifyemail{
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	font-size: 12px;
+	padding:3px;
+	background-color: #FF7000;
+	color: white;
+	cursor: pointer;
+}
+.receivemail{
+	display: none;
+}
+.filter {
+	display: none;
+}
+.me{
+	display: none;
+}
+
+@media only screen and (max-width: 767px) {
+	.me{
+		display: block;
+	}
+	
+	.filter {
+	    position: fixed;
+	    right: -150px;
+	    top: 0;
+	    z-index: 206;
+	    height: 100%;
+	    background: #fff;
+	    padding: 0;
+	    margin: 0;
+	    overflow: auto;
+	    display: block;
+	    text-align: center;
+	}
+	
+	.filter dl {
+	    min-height: 0;
+	    margin: 0;
+	}
+	.filter dt {
+	    background: #f0f0f0;
+	    height: 55px;
+	    line-height: 55px;
+	    margin: 0;
+	    padding: 0 10px;
+	}
+	.filter dd {
+	    line-height: 1.2em;
+	    margin: 20px 0;
+	}
+	.navtopItem{
+		display: none;
+	}
+	.loginIn{
+		display: none !important;
+	}
+}
+.filter.filterby-show {
+  right: 0;
+  -webkit-transition: right .5s ease-out;
+  transition: right .5s ease-out;
+}
+.filter {
+  right: -150px;
+  -webkit-transition: right .5s ease-out;
+  transition: right .5s ease-out;
+}
+
+@media (max-width: 320px) {
+   
+}
+ 
+/*iphone5*/
+@media only screen
+and (min-device-width : 320px) and (max-device-height : 568px){
+   
+}
+ 
+/*iphone4*/
+@media only screen and (min-device-width : 320px) and (max-device-height : 480px){
+	
+}
+
+/*自定义*/
+@media only screen and (min-device-width : 360px) and (max-device-width : 640px){
+    
+}
+ 
+/*iphone6*/
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px){
+    
+}
+ 
+/*iphone6p 7p 8x */
+@media only screen and (min-device-width : 414px) and (max-device-width : 736px){
+   
+}
