@@ -7,7 +7,7 @@ export function sendMailCode(email){
 	const data = {
 		email:email
 	}
-		return axios.post(url, data).then((res) => {
+		return axios.post(url,data).then((res) => {
 			return Promise.resolve(res.data)
 	})
 }

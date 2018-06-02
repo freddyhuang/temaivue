@@ -11,4 +11,4 @@ export const options = {
 }
 
 export const ERR_OK = 0
-export const baseUrl = 'https://112.94.6.36:9099/ticketsWeb/temai'
+export const baseUrl = 'http://112.94.6.36:9099/ticketsWeb/temai'
