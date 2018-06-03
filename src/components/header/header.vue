@@ -16,7 +16,7 @@
 
 				<div v-else style="display:inline-block" class="loginIn">
 						<span @click="showLogin">登录</span>
-						<span onclick="loginDiv.showRegister();">注册<c:if test="${isHasRegpack}"><a class="col_reg">(立送红包)</a></c:if></span>
+						<span onclick="loginDiv.showRegister();">注册<a class="col_reg">(立送红包)</a></span>
 				</div>
 				<span class="navtopItem">我的特卖</span>
 			
@@ -168,6 +168,7 @@ export default {
 			this.closePop();
 		},
 		showLogin(){
+			
 			this.loginBoxFlag = true;
 		},
 		changeLoginBoxFlag($event){

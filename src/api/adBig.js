@@ -1,3 +1,4 @@
+import { baseUrl } from './config'
 /**
 3.轮播广告
 url：${pageContext.request.contextPath}/temai/index/adBig
@@ -7,14 +8,20 @@ url：${pageContext.request.contextPath}/temai/index/adBig
  */
 export function getadBig() {
 
-	const url = '${pageContext.request.contextPath}/temai/index/adBig';
-	const data = qs.stringify({
-		username: 13631458340,
-		password: 123123,
-		code:2365
+	const url =baseUrl + '/index/adBig';
+	
+
+	return	$.ajax({
+		type: "POST",
+		url: url,
+		dataType: "json",
+		contentType: "application/json",
+		success: function(data){
+			return Promise.resolve(data)
+		},
+		error:function(error){
+			return Promise.reject(error)	
+		}
 	});
 
-	return axios.post(url, data).then((res) => {
-		return Promise.resolve(res.data)
-	})
 }

@@ -10,8 +10,8 @@
 	</div>
 </template>
 <script>
- require('../../api/imageTable.js')
-  require('../../api/common.js')
+import {getadBig} from 'api/adBig'
+require("../../api/imageTable.js")
 export default {
    
   data(){
@@ -22,8 +22,9 @@ export default {
     created(){
       this.$nextTick(function(){
         this._initAdBig();
+        this._getadBig();
       });
-      this._getadBig();
+     
     },
    mouthed(){
          

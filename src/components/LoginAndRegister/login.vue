@@ -13,10 +13,10 @@
 			</div>
 			<div class="loginindex_div" id="login_div">
 
-				<form action="loginindex.jspx" id="loginform" method="post">
+				<form  id="loginform" >
 					<input type="hidden" name="op" value="login"/>
 					<input type="hidden" id="loginRef" name="ref" value="${ref }"/>
-					<input type="hidden" id="login_verifykey_login" name="verifykey" value="${verifykey}" />
+					<input type="hidden" id="login_verifykey_login" name="verifykey" value="" />
 					<!-- <div class="msgdiv">${msg }</div> -->
 					<table style="line-height: 60px;">
 						<tr>
@@ -30,27 +30,27 @@
 						<tr>
 							<td class="register_title" align="right">验证码</td>
 							<td>
-								<input type="text" name="verifycode" class="login_num_input" id="login_verifycode_login" v-model="loginData.verifyCode" value=""/>
+								<input type="text" name="verifycode" class="login_num_input" id="login_verifycode_login" v-model="verifyCode" value=""/>
 								<a href="javascript:;" onclick="reloadVerifyImage('login');">&nbsp;&nbsp;
-									<img src="/getverifyimage.jspx?verifykey=${verifykey}" alt="点击重取" id="login_verifyimage_login" class="verifyimage" />
+									<img :src="'data:image/gif;base64,'+verifyImg" @click="_verifycode()" alt="点击重取" id="login_verifyimage_login" class="verifyimage" />
 								</a>
 							</td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="submit" class="login_btn" @click='_login()' value="登 录" id=""/></td>
+							<td><input type="button" class="login_btn" @click='_login()' value="登 录"/></td>
 						</tr>
 						<tr>
 							<td></td>
-							<td><a href="findpsw.jspx" target="_blank">忘记密码</a></td>
+							<td><a target="_blank">忘记密码</a></td>
 						</tr>
 					</table>
 					</form>
 				</div>
                 <!--注册box-->
 				<div class="loginindex_div" id="register_div" style="display: none;">
-					<form action="register.jspx" id="register_form" method="post">
-					<input type="hidden" id="login_verifykey_register" name="verifykey" value="${verifykey}" />
+					<form id="register_form">
+					<input type="hidden" id="login_verifykey_register" name="verifykey" value="" />
 					<table style="line-height: 45px;">
 						<tr>
 							<td class="register_title" align="right">用户名</td>
@@ -94,7 +94,7 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td><input type="button" @click="_register();"  class="login_btn" value="注  册" id=""/></td>
+							<td><input type="button" @click="_register();"  class="login_btn" value="注  册" /></td>
 						</tr>
 					</table>
 				</form>
@@ -102,18 +102,13 @@
 
 		</div>
 	</td>
-	<!-- <td style="border-left:none;">
-		<div>
-			<a href="/temai/071b4615-01fa071b4615-01fa.html"><img src="../../../static/images/login_ad.png" alt=""/></a>	
-		</div>	
-	</td> -->
 	</tr>
 </table>
 </div>
 </template>
 <script>
-import {login,register2,sendMailCode } from "../../api/login";
-import {jtrim,VerifyLoginName,VerifyEmailAddress,IsMobilePhone} from '../../api/common';
+import {login,register2,sendMailCode, verifycode } from "api/login";
+import {jtrim,VerifyLoginName,VerifyEmailAddress,IsMobilePhone} from 'api/common';
 export default {
   data(){
       return {
@@ -121,16 +116,17 @@ export default {
 		theUrl : null,
 		loginData:{
 			userName:'',
-			password:'',
-			verifyCode:''
-		}
+			password:''
+		},
+		verifyCode:'',
+		verifyImg:''
       }
   },
   created(){
-
+	  this._verifycode();//获取登录的图片验证码
   },
   mouthed(){
-
+	  
   },
   methods:{
      show:function (type){
@@ -147,6 +143,11 @@ export default {
     },
 	loginDivClose(){
 		this.$emit('changeLoginBoxFlag',false)
+	},
+	_verifycode(){
+		verifycode().then(res=>{
+			this.verifyImg = res;
+		})
 	},
     _login(){
 		console.log(this.loginData)
@@ -234,19 +235,23 @@ export default {
 			verifycode.focus();
 			return;
 		}
+		console.log(mAgree.is(":checked"));
 		if(!mAgree.is(":checked")){
 			alert("请阅读并同意用户注册协议");
 			return;
 		}
 		let regristerData = {
-			username : name,
-			password : psw,
-			telephone : phone,
-			email :email,
-			code : verifycode
+			username : name.val(),
+			password : psw.val(),
+			telephone : phone.val(),
+			email :email.val(),
+			code : verifycode.val()
 		}
 		register2(regristerData).then(res=>{
 			console.log(res)
+			if(res.code == 200){
+				alert('注册成功！')
+			}
 		})
 	}
   }
