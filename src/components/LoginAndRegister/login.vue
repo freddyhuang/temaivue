@@ -32,7 +32,7 @@
 							<td>
 								<input type="text" name="verifycode" class="login_num_input" id="login_verifycode_login" v-model="verifyCode" value=""/>
 								<a href="javascript:;" onclick="reloadVerifyImage('login');">&nbsp;&nbsp;
-									<img :src="'data:image/gif;base64,'+verifyImg" @click="_verifycode()" alt="点击重取" id="login_verifyimage_login" class="verifyimage" />
+									<img src="http://112.94.6.36:9099/ticketsWeb/temai/verifycode/code" @click="_verifycode()" alt="点击重取" id="login_verifyimage_login" class="verifyimage" />
 								</a>
 							</td>
 						</tr>
@@ -107,7 +107,7 @@
 </div>
 </template>
 <script>
-import {login,register2,sendMailCode, verifycode } from "api/login";
+import {login,register2,sendMailCode, verifycode , sureverifycode} from "api/login";
 import {jtrim,VerifyLoginName,VerifyEmailAddress,IsMobilePhone} from 'api/common';
 export default {
   data(){
@@ -115,7 +115,7 @@ export default {
         showDiv : null,
 		theUrl : null,
 		loginData:{
-			userName:'',
+			username:'',
 			password:''
 		},
 		verifyCode:'',
@@ -123,7 +123,7 @@ export default {
       }
   },
   created(){
-	  this._verifycode();//获取登录的图片验证码
+	  //this._verifycode();//获取登录的图片验证码
   },
   mouthed(){
 	  
@@ -151,9 +151,36 @@ export default {
 	},
     _login(){
 		console.log(this.loginData)
-        login(this.loginData).then((res)=>{
-            console.log(res)
-        })
+		
+		if(this.loginData.userName==''){
+			alert('请输入用户名')
+			return;
+		}
+		if(this.loginData.password==''){
+			alert('请输入你的密码')
+			return;
+		}
+		if(this.verifyCode == ''){
+			alert('验证码为空')
+			return false;
+		}
+		if(this.verifyCode.length<=2){
+			alert('验证码位数有误')
+			return false;
+		}
+		sureverifycode(this.verifyCode).then(res=>{
+			if(res.code == 200){
+				login(this.loginData,this.verifyCode).then((res)=>{
+					console.log(res)
+					if(res.code == 200){
+						
+					}
+				})
+			}else{
+				alert(res.msg);
+			}
+		})
+        
 		
 	},
 	_sendMailCode(){

@@ -35,7 +35,7 @@ export function sendMailCode(email){ // 发送电子邮件验证码
 	}
 	
 /**
-图片验证码
+  获取图片验证码
 
  */
 	export function verifycode(){
@@ -54,6 +54,29 @@ export function sendMailCode(email){ // 发送电子邮件验证码
 			}
 		});
 	}
+
+	/**
+        验证 图片验证码
+
+ */
+  export function sureverifycode(verifyCode){
+		console.log(verifyCode)
+	const url = baseUrl + '/verifycode/checkVerifyCode?verifyCode=' + verifyCode
+
+	return $.ajax({
+		type: "POST",
+		url: url,
+		dataType: "json",
+		success: function(data){
+			return Promise.resolve(data)
+		},
+		error:function(error){
+			return Promise.reject(error)
+		}
+	});
+	
+}
+	
 /**
 注册
 username 用户名 长度30
@@ -93,19 +116,18 @@ export function login(loginData) {
 	const url = baseUrl + '/user/login';
 	const params = JSON.stringify(loginData);
 
-	return	$.ajax({
-		type: "POST",
-		url: url,
-		data:params,
-		dataType: "json",
-		contentType: "application/json",
-		success: function(data){
-			return Promise.resolve(res.data)
-		},
-		error:function(error){
-			return Promise.reject(error)	
-		}
-	});
-	
+		return	$.ajax({
+			type: "POST",
+			url: url,
+			data:params,
+			dataType: "json",
+			contentType: "application/json",
+			success: function(data){
+				return Promise.resolve(res.data)
+			},
+			error:function(error){
+				return Promise.reject(error)	
+			}
+		});
 }
 
