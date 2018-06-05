@@ -6,11 +6,10 @@ url：/temai/index/adBig
 请求方式：ajax  post 
 -----------------------------
  */
-export function getadBig() {
+export function getadSmall() {
 
-	const url =baseUrl + '/index/adBig';
+	const url = baseUrl + '/index/adSmall';
 	
-
 	return	$.ajax({
 		type: "POST",
 		url: url,

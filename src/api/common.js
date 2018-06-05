@@ -259,3 +259,4 @@ function toFare(val, num) {
 	return parseFloat(val).toFixed(num);
 }
 
+

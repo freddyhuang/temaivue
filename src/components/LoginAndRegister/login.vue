@@ -73,7 +73,7 @@
 						</tr>
 						<tr>
 							<td class="register_title" align="right">邮箱</td>
-							<td><input placeholder="请输入邮箱用于找回密码"  type="text" class="login_text_input" name="email" id="email" value=""/>
+							<td><input placeholder="请输入邮箱用于找回密码" v-model="email"  type="text" class="login_text_input" name="email" id="email" value=""/>
 							<span  id="mBtnVerifyMail" class="btnverifyemail" @click="_sendMailCode">验证邮箱</span>
 							</td>
 						</tr>
@@ -119,7 +119,8 @@ export default {
 			password:''
 		},
 		verifyCode:'',
-		verifyImg:''
+		verifyImg:'',
+		email:''
       }
   },
   created(){
@@ -173,7 +174,9 @@ export default {
 				login(this.loginData,this.verifyCode).then((res)=>{
 					console.log(res)
 					if(res.code == 200){
-						
+
+						this.$emit('changeLoginBoxFlag',false);
+
 					}
 				})
 			}else{
@@ -185,11 +188,30 @@ export default {
 	},
 	_sendMailCode(){
 			
-		const email = "1358627726@qq.com";
+		const email = this.email;
 
+		if(email == ''){
+			alert('邮件不能为空')
+			return;
+		}
+		var mEmail = $("#email");
+		if(!VerifyEmailAddress(email)){
+			mEmail.focus();
+			alert("请输入正确的E-mail！");
+			return;
+		}
+		
+		//发送邮件
 		sendMailCode(email).then((res)=>{
-            console.log(res)
-        })
+			console.log(res)
+			const msg = res.msg
+			if(res.code == 200){
+				alert('发送成功')
+			}else{
+				alert(msg)
+			}
+		})
+		
 	},
 	_register(){
 		var form = $("#register_div");
@@ -274,10 +296,14 @@ export default {
 			email :email.val(),
 			code : verifycode.val()
 		}
-		register2(regristerData).then(res=>{
+
+		register2(regristerData).then(res=>{ //点击注册按钮
 			console.log(res)
+			const msg = res.msg
 			if(res.code == 200){
 				alert('注册成功！')
+			}else{
+				alert(msg)
 			}
 		})
 	}

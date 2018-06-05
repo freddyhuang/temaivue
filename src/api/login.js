@@ -104,6 +104,7 @@ export function register2(data) {
 		});
 }
 
+
 /**
 登陆、
 username 用户名

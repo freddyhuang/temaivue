@@ -4,14 +4,8 @@
 			<div class="dibusplb">
 				<!-- <c:forEach items="${bottom }" var="a"  varStatus="idx"> -->
 					<!-- <c:if test="${idx.index<4 }"> -->
-						<a href="/temai/${a.currentProduct.no }.html">
-							<img src="http://www.gztemai.com/image.jspx?id=15c679c825f" alt="" />
-						</a>
-                        <a href="/temai/${a.currentProduct.no }.html">
-							<img src="http://www.gztemai.com/image.jspx?id=15c679c825f" alt="" />
-						</a>
-                        <a href="/temai/${a.currentProduct.no }.html">
-							<img src="http://www.gztemai.com/image.jspx?id=15c679c825f" alt="" />
+						<a href="/temai/${a.currentProduct.no }.html" v-for="item in adSmall ">
+							<img :src="item.img" alt="" />
 						</a>
 					<!-- </c:if>
 				</c:forEach> -->
@@ -19,6 +13,46 @@
 		</div>
 	<!-- </c:if> -->
 </template>
+<script>
+import {getadSmall} from 'api/products'
+require("../../api/imageTable.js")
+export default {
+   
+  data(){
+      return {
+        adSmall:[]
+      }
+    },
+    created(){
+      this.$nextTick(function(){
+        this._getadSmall();
+      });
+     
+    },
+    mouthed(){
+         
+    },
+    methods:{
+     _initAdBig:function (){
+		$('#image_div').flexslider({
+            animation: "slide",
+            direction:"horizontal",
+            easing:"swing"
+        });
+    },
+    _getadSmall(){
+      getadSmall().then((res)=>{
+        console.log(res);
+        if(res.code == 200){
+          const result = res.result;
+          this.adSmall = result
+         
+        }
+      })
+    }
+  }
+}
+</script>
 <style scoped>
  .dibusplb{
         display: -webkit-box;;

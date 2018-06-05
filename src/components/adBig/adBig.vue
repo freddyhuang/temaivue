@@ -1,11 +1,13 @@
 <template>
   <div id="image_div" class="flexslider">
 		<ul class="slides">
-			<!-- <c:forEach items="${banner }" var="a"> -->
-				<!-- <li><div class="img"><a href="/temai/${a.currentProduct.no }.html"><img src="/image.jspx?id=${a.picture.id.ordinal }" alt="" /></a></div></li> -->
-                <li><div class="img"><a href="/temai/${a.currentProduct.no }.html"><img src="http://www.gztemai.com/image.jspx?id=15b46e94155" alt="" /></a></div></li>
-                <li><div class="img"><a href="/temai/${a.currentProduct.no }.html"><img src="http://www.gztemai.com/image.jspx?id=15b46e94155" alt="" /></a></div></li>
-			<!-- </c:forEach> -->
+			<li v-for="item in adBig">
+        <div class="img">
+          <a href="javascript:;">
+            <img :src="item.img" alt="" />
+          </a>
+        </div>
+      </li>	
 		</ul>
 	</div>
 </template>
@@ -16,12 +18,11 @@ export default {
    
   data(){
       return {
-
+        adBig:[]
       }
     },
     created(){
       this.$nextTick(function(){
-        this._initAdBig();
         this._getadBig();
       });
      
@@ -40,6 +41,13 @@ export default {
     _getadBig(){
       getadBig().then((res)=>{
         console.log(res);
+        if(res.code == 200){
+          const result = res.result;
+          this.adBig = result
+          setTimeout(()=>{
+            this._initAdBig();
+          },0)
+        }
       })
     }
   }
