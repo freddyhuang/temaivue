@@ -42,7 +42,9 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td><a target="_blank">忘记密码</a></td>
+							<td>
+								<router-link :to="'/forgetPwd'">忘记密码</router-link>
+							</td>
 						</tr>
 					</table>
 					</form>

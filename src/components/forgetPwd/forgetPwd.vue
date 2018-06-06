@@ -18,7 +18,9 @@
                                 <td class="register_title" align="right">验证码</td>
                                 <td>
                                     <input type="text" name="verifycode" class="login_num_input" id="verifycode_findback" value=""/>
-                                    <a href="javascript:;" onclick="reloadVerifyImage('findback');">&nbsp;&nbsp;<img src="/getverifyimage.jspx?verifykey=${verifykey}" alt="点击重取" id="verifyimage_findback" class="verifyimage" /></a>
+                                    <a href="javascript:;" onclick="reloadVerifyImage('findback');">
+                                        &nbsp;&nbsp;<img src="http://112.94.6.36:9099/ticketsWeb/temai/verifycode/code" alt="点击重取" id="verifyimage_findback" class="verifyimage" />
+                                    </a>
                                 </td>
                             </tr>
                             <tr>
@@ -33,6 +35,50 @@
         </tr>
     </table>
 </template>
+<script>
+import {VerifyEmailAddress} from 'api/common';
+import { forgetPwd } from "api/forgetPwd"
+export default {
+    data(){
+        return {
+
+        }
+    },
+    methods:{
+        _forgetPwd(){
+            let mMail = $("#mMail");
+            let verifycode = $('#verifycode_findback');
+            if(mMail.val() == ''){
+                alert('邮件不能为空')
+                return
+            }
+            if(!VerifyEmailAddress(mMail.val())){
+                mMail.focus();
+                alert("请输入正确的E-mail！");
+                return;
+            }
+           if (0 == verifycode.val().length) {
+                alert("请输入验证邮箱中收到的验证码！");
+                verifycode.focus();
+                return;
+            }
+            const params = {"email":mMail.val(),"code":verifycode.val()}
+            forgetPwd(params).then(res=>{
+                let msg = res.msg;
+                if(res.code == 200){
+                    alert(msg);
+                    this.$router.push({path:"/login"})
+                }else{
+
+                    alert(msg);
+
+                }
+            })
+        }
+    }
+}
+</script>
+
 <style scoped>
      @import "../../../static/css/login.css";
      @import "../../../static/css/head.css";
