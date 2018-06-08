@@ -1,17 +1,17 @@
 import { baseUrl } from './config'
 /**
-3.轮播广告
-url：/temai/index/adBig
+商品详情 -6
+url：/temai//product/detail?id=00000000001
 参数：
 请求方式：ajax  post 
 -----------------------------
  */
-export function getadBig() {
+export function getProductsDetail(productsId) {
 
-	const url =baseUrl + '/index/adBig';
+	const url = baseUrl + '/product/detail?id=' + productsId;
 	
 	return	$.ajax({
-		type: "POST",
+		type: "get",
 		url: url,
 		dataType: "json",
 		contentType: "application/json",

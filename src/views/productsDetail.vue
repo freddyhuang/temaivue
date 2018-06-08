@@ -257,8 +257,26 @@
 </div>
 </template>
 <script>
+import { getProductsDetail } from "api/productsDetail";
 export default {
-  
+	data(){
+		return {
+
+		}
+	},
+	created(){
+	  this._getProductsDetail(productsId);//获取登录的图片验证码
+ 	 },
+	mouthed(){
+		
+	},
+	methods:{
+		_getProductsDetail(productsId){
+			getProductsDetail(productsId).then(res=>{
+				console.log(res)
+			})
+		}
+	}
 }
 </script>
 <style scoped>
