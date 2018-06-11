@@ -4,8 +4,8 @@
 			<div class="dibusplb">
 				<!-- <c:forEach items="${bottom }" var="a"  varStatus="idx"> -->
 					<!-- <c:if test="${idx.index<4 }"> -->
-						<a href="/temai/${a.currentProduct.no }.html" v-for="item in adSmall ">
-							<img :src="item.img" alt="" />
+						<a href="javascript:;" v-for="item in adSmall ">
+							<img :src="item.img" alt="" @click="_goProductsDetail(item.productId)" />
 						</a>
 					<!-- </c:if>
 				</c:forEach> -->
@@ -33,13 +33,7 @@ export default {
          
     },
     methods:{
-     _initAdBig:function (){
-		$('#image_div').flexslider({
-            animation: "slide",
-            direction:"horizontal",
-            easing:"swing"
-        });
-    },
+    
     _getadSmall(){
       getadSmall().then((res)=>{
         console.log(res);
@@ -49,6 +43,12 @@ export default {
          
         }
       })
+    },
+    _goProductsDetail(productId){ // 跳转详情页
+
+      this.$store.commit("changeProductId", productId);
+      this.$router.push({path:"/productsDetail"})
+
     }
   }
 }

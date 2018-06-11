@@ -3,36 +3,34 @@
 	<table cellpadding="0" cellspacing="0" class="success">
 		<tr>
 			<td>
-				<form action="order.jspx" id="orderForm">
-					<input type="hidden" name="op" value="buy"/>
-					<input type="hidden" name="id" value="${product.id }"/>
-					<input type="hidden" name="count" value="${count }"/>
+				<form id="orderForm">
+					
 					<div class="ordermessage">
-						<!-- 倒计时 -->
-						<div style="height: 50px">
-							<c:choose>
-								<c:when test="${5 == product.state.id }">
+							<!-- 倒计时 -->
+							<div style="height: 50px">
+						
+								<nav v-if="state.status==0">
 									<div class="top">距离抢购开始时间还有</div>
 									<div style="width: 208px;height: 60px;float: left;"  id="countup"></div>
-								</c:when>
-								<c:when test="${6 == product.state.id }">
+								</nav>
+								<nav v-else-if="state.status == 1">
 									<div class="top">距离抢购截止时间还有</div>
 									<div style="width: 208px;height: 60px;float: left;"  id="countup"></div>
-								</c:when>
-								<c:when test="${1 == product.state.id }">
+								</nav>
+								<nav v-else-if="state.status == 2">
 									<div class="top">距离购买开始时间还有</div>
 									<div style="width: 208px;height: 60px;float: left;"  id="countup"></div>
-								</c:when>
-								<c:when test="${2 == product.state.id }">
+								</nav>
+								<nav v-else-if="state.status == 3">
 									<div class="top">距离购买截止时间还有</div>
 									<div style="width: 208px;height: 60px;float: left;"  id="countdown"></div>
-								</c:when>
-								<c:otherwise>
+								</nav>
+								<nav v-else>
 									<div class="top">活动已结束</div>
 									<div style="width: 208px;height: 60px;float: left;"  id="countover"></div>
-								</c:otherwise>
-							</c:choose>
-					    </div>
+								</nav>
+							
+					    	</div>
 						<!-- 支付方式 -->
 						<div class="selectPayType">
 							<!-- 确认订单 -->
@@ -46,19 +44,17 @@
 										<th>总价</th>
 									</tr>
 									<tr>
-										<td><a target="_blank" href="/temai/${product.no }.html">${product.name }</a></td>
+										<td><a target="_blank" >{{product.name}}</a></td>
 										<td>
-											<c:choose>
-												<c:when test="${null != product.expiryTime }">
-													<span><fmt:formatDate value='${product.expiryTime }' pattern='yyyy-MM-dd HH:mm'/></span>
-												</c:when>
-												<c:otherwise><span>无限期使用</span></c:otherwise>
-											</c:choose>
+											<span v-if=" product.expiryDate != null">{{product.expiryDate}}</span>
+							
+											<span v-else>无限期使用</span>
+						
 										</td>
-										<td>${count }</td>
-										<td>¥<fmt:formatNumber value="${(product.salePrice.amount/100) * count }" /></td>
+										<td>{{params.num}}</td>
+										<td>¥{{product.purchasePrice * params.num}}</td>
 									</tr>
-									<c:if test="${not empty product.standards }">
+									<!-- <c:if test="${not empty product.standards }">
 										<tr>
 											<td width="263">请选择商品规格</td>									
 											<td align="left" colspan="3" class="standards" valign="middle">
@@ -67,10 +63,10 @@
 												</c:forEach>
 											</td>									
 										</tr>
-									</c:if>
+									</c:if> -->
 								</table>
 							</div>
-							<!-- <span class="font_bule">请选择支付方式</span>
+							<span class="font_bule">请选择支付方式</span>
 						    <div style="margin: 30px 0 50px 0;">
 					    		<div class="bankdiv">
 				    				<span class="bank">
@@ -82,9 +78,8 @@
 		    							<label for="zfb"><img src="/images/zhifubaologo.png" alt="支付宝" height="40px" width="177px" align="middle" class="bankimg" ></img></label>
 				    				</span>
 					    		</div>
-						    </div> -->
-						    
-						    <table class="allpaytb">
+						    </div>
+						 <table class="allpaytb">
 						   		<c:if test="${empty oldproduct}">
 						    	<tr>
 						    		<td colspan="2">
@@ -129,7 +124,7 @@
 						    			</c:if>
 						    		</td>
 						    	</tr>
-						    	</c:if>
+						    	</c:if> 
 						    	<tr>
 						    		<td class="snaptips" style="width: 400px;">
 									    <c:set var="promoprice" value="${0}"></c:set>
@@ -150,10 +145,10 @@
 						    		</td>
 						    	</tr>
 						    </table>
-						</div>
+						</div> 
 						<!-- 确认支付 -->	
-						<div class="paybnt_div" id="paybnt_div">
-							<c:choose>
+						<div class="paybnt_div" id="paybnt_div"> 
+							 <c:choose>
 								<c:when test="${5 == product.state.id }">
 									<div class="unbuy" id="unstart">待抢购</div>
 								</c:when>
@@ -169,19 +164,19 @@
 									<div class="unbuy" id="unstart">未开始</div>
 								</c:when>
 								<c:when test="${2 == product.state.id }">
-									<c:if test="${canBuy }">
+									<c:if test="${canBuy }"> 
 										<input class="pay_bnt" id="pay_bnt" type="button" onclick="checkCanBuy(${count },'${product.id }');" value="提交订单"/>
 									</c:if>
-									<c:if test="${!canBuy }">
+									<c:if test="${!canBuy }"> 
 										<input class="unpay_bnt" id="unpay_bnt" type="button" value="提交订单"/>
 									</c:if>
 								</c:when>
-								<c:when test="${3 == product.state.id || 4 == product.state.id}">
+								<c:when test="${3 == product.state.id || 4 == product.state.id}"> -->
 									<div class="unbuy" id="unbuy">已结束</div>
 								</c:when>
 							</c:choose>
 						</div>
-					</div>
+					 </div>
 				</form>
 			</td>
 			<td class="td_advert" valign="top">
@@ -191,11 +186,56 @@
 					<a href="http://xq.zuoche.com/sns/xqdownload/" target="_blank"><span class="xianquan"></span></a>
 				</div>
 			</td>
-		</tr>
+		</tr> -->
 	</table>
 </div>
 
 </template>
+<script>
+import { orderSubmit } from "api/readyOrder";
+export default {
+	data(){
+		return {
+
+			product:{},
+			state:{},
+			params:{}
+		
+		}
+	},
+	created(){
+
+		this.product = this.$store.state.product.id
+		? this.$store.state.product
+		: JSON.parse(window.localStorage.getItem("product"));
+
+		this.state = this.$store.state.StateDate.status
+		? this.$store.state.StateDate
+		: JSON.parse(window.localStorage.getItem("StateDate"));
+
+		this.params = this.$store.state.buyDes.title
+		? this.$store.state.buyDes
+		: JSON.parse(window.localStorage.getItem("buyDes"));
+		console.log(this.params)
+	  	this._orderSubmit(this.params); // 提交订单
+	 
+	 },
+	 mounted(){
+		
+	
+	},
+	methods:{
+		_orderSubmit(params){
+			orderSubmit(params).then(res=>{
+				console.log(res)
+			})
+		},
+		_goreadyOrder(){
+			this.$router.push({path:"/readyOrder"});
+		}
+	}
+}
+</script>
 <style scoped>
  @import "../../static/css/countdown.css";
   @import "../../static/css/success.css";
