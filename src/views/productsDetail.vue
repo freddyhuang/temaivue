@@ -306,11 +306,11 @@ export default {
 		},
 		_goreadyOrder(){
 			const orderData = {
-				"productId":this.$store.state.productId||window.localStorage.getItem('productId'),
-				"num":1,
-				"travelDate":"2018-05-30",
-				"userNames":"张三",
-				"userPhones":"13302995990"
+				productId:this.$store.state.productId||window.localStorage.getItem('productId'),
+				num:1,
+				travelDate:"2018-05-30",
+				userNames:"张三",
+				userPhones:"13302995990"
 			}
 			
 

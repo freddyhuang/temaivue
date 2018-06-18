@@ -172,6 +172,7 @@ export default {
 			this.loginBoxFlag = true;
 		},
 		changeLoginBoxFlag($event){
+			console.log($event)
 			this.loginBoxFlag = $event;
 		},
 		_login(){

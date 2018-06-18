@@ -28,11 +28,13 @@ export const store = new Vuex.Store({
         	state.productId = id
         },
         changeProduct(state,product){
-        	window.localStorage.setItem('product',product);
+            var productStr = JSON.stringify(product);
+        	window.localStorage.setItem('product',productStr);
         	state.product = product
         },
         addState(state,StateDate){
-        	window.localStorage.setItem('StateDate',StateDate);
+            var StateDateStr = JSON.stringify(StateDate);
+        	window.localStorage.setItem('StateDate',StateDateStr);
         	state.StateDate = StateDate
         },
         changeAgentCode(state,agentCode){
@@ -44,9 +46,12 @@ export const store = new Vuex.Store({
         	window.localStorage.setItem('buyDes',buyDesJsonStr);
         	state.buyDes = buyDesJson
         },
-        changePayDate(state,paydata){
-        	window.localStorage.setItem('payData',paydata);
-        	state.payData = paydata;
+        changePayDate(state,payData){
+            console.log(1225)
+            var payDataStr = JSON.stringify(payData);
+            console.log(1227)
+        	window.localStorage.setItem('payData',payDataStr);
+        	state.payData = payData;
         }
     },
     modules: {

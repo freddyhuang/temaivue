@@ -71,11 +71,16 @@
 					    		<div class="bankdiv">
 				    				<span class="bank">
 			    						<input type="radio" id="union" name="paytype" checked="checked" value="1"/>
-				    					<label for="union"><img src="/images/unionpay.png" alt="银联" height="40px" width="162px" align="middle" class="bankimg" ></img></label>
+				    					<label for="union">
+											<img src="../../static/images/unionpay.png" alt="银联" height="40px" width="162px" align="middle" class="bankimg" >
+										</label>
 				    				</span>
 				    				<span class="bank">
 			    						<input type="radio" id="zfb" name="paytype" value="2"/>
-		    							<label for="zfb"><img src="/images/zhifubaologo.png" alt="支付宝" height="40px" width="177px" align="middle" class="bankimg" ></img></label>
+		    							<label for="zfb">
+											<img src="../../static/images/zhifubaologo.png" alt="支付宝" height="40px" width="177px" align="middle" class="bankimg" >
+											
+										</label>
 				    				</span>
 					    		</div>
 						    </div>
@@ -148,33 +153,33 @@
 						</div> 
 						<!-- 确认支付 -->	
 						<div class="paybnt_div" id="paybnt_div"> 
-							 <c:choose>
-								<c:when test="${5 == product.state.id }">
-									<div class="unbuy" id="unstart">待抢购</div>
-								</c:when>
-								<c:when test="${6 == product.state.id }">
-									<c:if test="${canBuy }">
-										<input class="pay_bnt" id="pay_bnt" type="button" onclick="checkCanBuy(${count },'${product.id }');" value="提交订单"/>
-									</c:if>
+							 <!-- <c:choose>
+								<c:when test="${5 == product.state.id }"> -->
+									<div class="unbuy" id="unstart"  v-show="state.status==0" >待抢购</div>
+								<!-- </c:when> -->
+								<!-- <c:when test="${6 == product.state.id }">
+									<c:if test="${canBuy }"> -->
+										<input v-show="state.status==1"  class="pay_bnt"  type="button" @click="_orderSubmit" value="提交订单"/>
+									<!-- </c:if>
 									<c:if test="${!canBuy }">
 										<input class="unpay_bnt" id="unpay_bnt" type="button" value="提交订单"/>
 									</c:if>
-								</c:when>
-								<c:when test="${1 == product.state.id }">
-									<div class="unbuy" id="unstart">未开始</div>
-								</c:when>
-								<c:when test="${2 == product.state.id }">
-									<c:if test="${canBuy }"> 
-										<input class="pay_bnt" id="pay_bnt" type="button" onclick="checkCanBuy(${count },'${product.id }');" value="提交订单"/>
-									</c:if>
-									<c:if test="${!canBuy }"> 
+								</c:when> -->
+								<!-- <c:when test="${1 == product.state.id }"> -->
+									<div v-show="state.status==2" class="unbuy" id="unstart">未开始</div>
+								<!-- </c:when> -->
+								<!-- <c:when test="${2 == product.state.id }">
+									<c:if test="${canBuy }">  -->
+										<input  v-show="state.status==3" class="pay_bnt" id="pay_bnt" type="button"  @click="_orderSubmit" value="提交订单"/>
+									<!-- </c:if> -->
+									<!-- <c:if test="${!canBuy }"> 
 										<input class="unpay_bnt" id="unpay_bnt" type="button" value="提交订单"/>
-									</c:if>
-								</c:when>
-								<c:when test="${3 == product.state.id || 4 == product.state.id}"> -->
-									<div class="unbuy" id="unbuy">已结束</div>
-								</c:when>
-							</c:choose>
+									</c:if> -->
+								<!-- </c:when> -->
+								<!-- <c:when test="${3 == product.state.id || 4 == product.state.id}"> -->
+									<div v-show="state.status==4" class="unbuy" id="unbuy">已结束</div>
+								<!-- </c:when>
+							</c:choose> -->
 						</div>
 					 </div>
 				</form>
@@ -186,20 +191,23 @@
 					<a href="http://xq.zuoche.com/sns/xqdownload/" target="_blank"><span class="xianquan"></span></a>
 				</div>
 			</td>
-		</tr> -->
+		</tr>
 	</table>
+	<login v-show="loginBoxFlag" @changeLoginBoxFlag="_changeLoginBoxFlag"></login>
 </div>
 
 </template>
 <script>
 import { orderSubmit } from "api/readyOrder";
+import login from '@/components/LoginAndRegister/login';
 export default {
 	data(){
 		return {
 
 			product:{},
 			state:{},
-			params:{}
+			params:{},
+			loginBoxFlag:false
 		
 		}
 	},
@@ -216,8 +224,8 @@ export default {
 		this.params = this.$store.state.buyDes.title
 		? this.$store.state.buyDes
 		: JSON.parse(window.localStorage.getItem("buyDes"));
-		console.log(this.params)
-	  	this._orderSubmit(this.params); // 提交订单
+		console.log(this.params) // 提交订单的数据
+	  	
 	 
 	 },
 	 mounted(){
@@ -225,19 +233,42 @@ export default {
 	
 	},
 	methods:{
-		_orderSubmit(params){
-			orderSubmit(params).then(res=>{
-				console.log(res)
+		_orderSubmit(){
+			const orderData = this.params;
+			orderSubmit(orderData).then(res=>{
+				res = JSON.parse(res)				
+				
+				if(res.code == 200){
+					let payData = res.result;
+					console.log(1223)
+					this.$store.commit('changePayDate',payData);
+					console.log(1224)
+					this.$router.push({path:"/payorder"});
+				}else if(res.code == 500){
+					
+					if(res.msg == '抱歉，下单失败，请稍后再试'){
+						alert(res.msg)
+					}else{ // 用户未登录，请登录后再下单
+						this.loginBoxFlag = true;
+					}
+					
+				}else{
+					alert(res.msg)
+				}
 			})
 		},
-		_goreadyOrder(){
-			this.$router.push({path:"/readyOrder"});
+		_changeLoginBoxFlag(msg){
+			console.log(msg)
+			this.loginBoxFlag = msg
 		}
+	},
+	components:{
+		login
 	}
 }
 </script>
 <style scoped>
- @import "../../static/css/countdown.css";
-  @import "../../static/css/success.css";
+ 	@import "../../static/css/countdown.css";
+  	@import "../../static/css/success.css";
 </style>
 

@@ -25,7 +25,7 @@
 }
 
 .congratulationsimg {
-	background-image: url("/images/success.png");
+	background-image: url("../images/success.png");
 	width: 103px;
 	height: 102px;
 	display: inline-block;
@@ -320,7 +320,7 @@
 
 .zuoche {
 	margin-top: 30px;
-	background-image: url("/images/zuoche.png");
+	background-image: url("../images/zuoche.png");
 	width: 256px;
 	height: 94px;
 	display: inline-block;
@@ -329,7 +329,7 @@
 
 .xianquan {
 	margin-top: 30px;
-	background-image: url("/images/xianquan.png");
+	background-image: url("../images/xianquan.png");
 	width: 256px;
 	height: 94px;
 	display: inline-block;
@@ -425,7 +425,7 @@
 	filter: progid:DXImageTransform.Microsoft.Alpha(style=3, opacity=50,
 		finishOpacity=50);
 	opacity: 0.5;
-	position: absolute;
+	position: fixed;
 	top: 0px;
 	left: 0px;
 	z-index: 999;

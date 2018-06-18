@@ -1,18 +1,16 @@
 import { baseUrl } from './config'
 /**
-
+14.我的红包接口 
 -----------------------------
  */
-export function orderSubmit(orderData) {
-	console.log(orderData)
-    const url = baseUrl + '/order/submit';
+export function myredpack() {
+
+    const url = baseUrl + '/redBag/list';
     
-    const data = JSON.stringify(orderData);
-	
+  
 	return	$.ajax({
 		type: "POST",
 		url: url,
-		data:data,
 		contentType: "application/json",
 		success: function(data){
 			return Promise.resolve(data)

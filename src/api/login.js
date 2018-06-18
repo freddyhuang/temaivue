@@ -5,21 +5,8 @@ export function sendMailCode(email){ // 发送电子邮件验证码
 	const params = JSON.stringify({
 		email:email
 	})
-	// return axios({
-	// 	method: 'post',
-	// 	url: url,
-		
-	// 	data:params
-	// 	})
-	// 	.then((res) => {
 
-	// 		return Promise.resolve(res.data)
-	// 	})
-	// 	.catch((error) => {
-
-	// 		return Promise.reject(error)
-	// 	});
-		return	$.ajax({
+	return	$.ajax({
 				type: "POST",
 				url: url,
 				data:params,
@@ -112,15 +99,20 @@ password 密码
 code 验证码（图片验证码接口11）
 -----------------------------
  */
-export function login(loginData) {
+export function login(loginData,verifyCode) {
 
 	const url = baseUrl + '/user/login';
-	const params = JSON.stringify(loginData);
-
+	var params = JSON.stringify(loginData);
+	var paramsdata =JSON.stringify({
+		username:loginData.username,
+		password:loginData.password,
+		code:verifyCode
+	})
+     
 		return	$.ajax({
 			type: "POST",
 			url: url,
-			data:params,
+			data:paramsdata,
 			dataType: "json",
 			contentType: "application/json",
 			success: function(data){
