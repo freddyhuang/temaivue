@@ -1,35 +1,49 @@
 <template>
    <div>
        	<h3 class="title_td">我的红包</h3>
+			<tr>
+				<td valign="top">
 					<div class="matter_div">
-                        <td class="leftpack">
-                            <div class="pack_type">${pack.type.name }</div>
-                            <div class="pack_limitedtime">
-                                有效期 <c:choose>
-                                <c:when test="${not empty pack.expiryDate}">
-                                    <fmt:formatDate value="${pack.effectDate}" pattern="yyyy-MM-dd HH:mm"></fmt:formatDate> 至 <fmt:formatDate value="${pack.expiryDate}" pattern="yyyy-MM-dd HH:mm"></fmt:formatDate>
-                                </c:when>
-                                <c:otherwise>
-                                    <fmt:formatDate value="${pack.effectDate}" pattern="yyyy-MM-dd HH:mm"></fmt:formatDate> 至 不限
-                                </c:otherwise>
-                            </c:choose>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="pack_limitedtime">${pack.state.name }</div>
-                        </td>
-                        <td>
-                            <div class="pack_type">
-                            <span class="col_amount"><fmt:formatNumber value="${pack.amount/100 }" pattern="#,###.##"></fmt:formatNumber>元</span>
-                            <c:if test="${pack.type.id ==2}"><a href="/temai/${pack.product.no }.html" class="limitedgoods">（限购“${pack.product.name}”）</a></c:if>
-                            </div>
-                        </td>
+					    <table class="orderTable" >
+					    	<tbody>
+						    	<!-- <c:forEach items="${list }" var="pack"> -->
+								<tr v-for="item in myredpackList" :key="item">
+									<td class="leftpack">
+										<div class="pack_type" v-if="item.channel == 1">定向红包</div>
+										<div class="pack_type" v-else>通用红包</div>
+										
+										<div class="pack_limitedtime">
+											有效期 
+												{{item.beginTime}} 至 {{item.overTime}}
+
+												<!-- <fmt:formatDate value="${pack.effectDate}" pattern="yyyy-MM-dd HH:mm"></fmt:formatDate> 至 不限 -->
+											
+										</div>
+									</td>
+									<td>
+										<div class="pack_limitedtime" v-if="item.status == 0">待生效</div>
+										<div class="pack_limitedtime" v-if="item.status == 1">未使用</div>
+										<div class="pack_limitedtime" v-if="item.status == 2">已使用</div>
+										<div class="pack_limitedtime" v-if="item.status == 3">已过期</div>
+									</td>
+									<td>
+										<div class="pack_type" v-if="item.channel==1">
+											<span class="col_amount">
+												{{item.money}}元
+											</span>
+											<a href="javascript:;" class="limitedgoods">（限购“{{item.productName}}”）</a>
+										</div>
+									</td>
+								</tr>
+						    	<!-- </c:forEach> -->
+					    	</tbody>
+					    </table>
 					</div>
 					<div style="margin: 20px 30px 30px 0;float: right;clear: both;">
 						<jsp:include page="/pagebar.jsp" />
 					</div>
 				</td>
-			</tr>
+		</tr>
 	</div>
 </template>
 <script>
@@ -39,7 +53,7 @@ export default {
 	data(){
 		return {
            
-            myredpackList:{}
+            myredpackList:[]
 		}
 	},
 	created(){

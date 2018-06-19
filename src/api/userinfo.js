@@ -1,6 +1,6 @@
 import { baseUrl } from './config'
 /**
-更新个人信息
+获取个人信息
 -----------------------------
  */
 export function updateUserinfo() {

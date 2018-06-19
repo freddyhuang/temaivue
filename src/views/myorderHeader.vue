@@ -6,7 +6,7 @@
                     <td rowspan="2" class="ment_td" valign="top">
                         <ul>
                             <!-- <li>我的抢购</li> -->
-                            <router-link to="/myorderHeader/myorder"><li style="color: #FF9000;">我的订单<span>&rsaquo;</span></li></router-link>
+                            <router-link to="/myorderHeader/myorder"><li>我的订单</li></router-link>
                             <router-link to="/myorderHeader/myredpack"><li>我的红包</li></router-link>
                             <router-link to="/myorderHeader/userinfo"><li>账号设置</li></router-link>
 
@@ -31,6 +31,9 @@ export default {
 <style scoped>
   
     @import "../../static/css/myorder.css";
+    .router-link-active{
+       color: rgb(255, 144, 0);
+    }
 </style>
 
 

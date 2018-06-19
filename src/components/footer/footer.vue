@@ -2,7 +2,7 @@
 <div class="footer">
 	<div class="footer_top">
 		<div class="footer_top_div">
-			<a href="/about.jspx">关于我们</a>
+			<router-link to="/about">关于我们</router-link> 
 			<span class="footer_line">|</span>
 			<a href="/contact.jspx">联系我们</a>
 			<span class="footer_line">|</span>

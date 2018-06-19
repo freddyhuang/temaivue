@@ -110,6 +110,7 @@
 </template>
 <script>
 import {login,register2,sendMailCode, verifycode , sureverifycode} from "api/login";
+import { updateUserinfo } from "api/userinfo";
 import { baseUrl } from "api/config";
 import {jtrim,VerifyLoginName,VerifyEmailAddress,IsMobilePhone} from 'api/common';
 export default {
@@ -185,7 +186,7 @@ export default {
 					if(res.code == 200){
 
 						this.$emit('changeLoginBoxFlag',false);
-
+						
 					}else{
 
 						alert(res.msg)

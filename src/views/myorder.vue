@@ -80,7 +80,10 @@
 										元
 						    		</td>
 						    		<td>
-										<span style="color: #009900">${order.state.name }</span>
+										<!--状态 status 0：等待付款 1：支付成功 2:支付失败-->
+										<span v-if="item.status == 0" style="color: #009900">等待付款</span>
+										<span v-else-if="item.status == 1" style="color: #009900">支付成功</span>
+										<span v-else-if="item.status == 2" style="color: #009900">支付失败</span>
 									</td>
 						    		<td style="border-right:1px solid #CCCCCC">
 							    		<c:if test="${2 == order.state.id || 3 == order.state.id}">
