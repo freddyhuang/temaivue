@@ -186,6 +186,7 @@ export default {
 					if(res.code == 200){
 
 						this.$emit('changeLoginBoxFlag',false);
+						this.$emit('_updateUserinfo');
 						
 					}else{
 

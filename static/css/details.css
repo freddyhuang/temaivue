@@ -1,7 +1,7 @@
 @charset "utf-8";
 
 .detailsTop {
-	width: 1000px;
+
 	height: 360px;
 	margin: 20px auto;
 }
@@ -297,4 +297,53 @@
 }
 .scroll:hover {
 	background-position: 0px 0px;
+}
+
+.productHeadImg{
+	
+}
+
+@media only screen and (max-width: 767px) {
+	.productHeadImg{
+		
+		
+	}
+	.productDes{
+		display: flex!important;
+		display: -webkit-flex!important;
+		flex-direction: column!important;
+		justify-content: center;
+		align-items: center;
+	}
+
+}
+
+@media (max-width: 320px) {
+   
+}
+ 
+/*iphone5*/
+@media only screen
+and (min-device-width : 320px) and (max-device-height : 568px){
+   
+}
+ 
+/*iphone4*/
+@media only screen and (min-device-width : 320px) and (max-device-height : 480px){
+	
+}
+
+/*自定义*/
+@media only screen and (min-device-width : 360px) and (max-device-width : 640px){
+    
+}
+ 
+/*iphone6*/
+@media only screen and (min-device-width : 375px) and (max-device-width : 667px){
+    
+}
+ 
+/*iphone6p 7p 8x */
+@media only screen and (min-device-width : 414px) and (max-device-width : 736px){
+   
 }

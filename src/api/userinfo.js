@@ -75,6 +75,39 @@ export function updatePassword(oldP,newP) {
 	return	$.ajax({
 		type: "POST",
 		url: url,
+		data:data,
+		contentType: "application/json",
+		success: function(data){
+			return Promise.resolve(data)
+		},
+		error:function(error){
+			return Promise.reject(error)	
+		}
+	});
+
+}
+
+/**
+–退出
+url：http://192.168.0.112:8080/ticketsWeb/ temai/user/logout
+参数：无
+请求方式：ajax post
+返回数据：
+{
+“success”：true,//true成功 false失败
+“code”:200,//200成功 500失败
+“msg”:”成功”,  
+“result”:null
+}
+
+ */
+export function loginOut() {
+
+    const url = baseUrl + '/user/logout';
+    
+	return	$.ajax({
+		type: "POST",
+		url: url,
 		contentType: "application/json",
 		success: function(data){
 			return Promise.resolve(data)

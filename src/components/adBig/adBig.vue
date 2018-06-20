@@ -3,7 +3,7 @@
 		<ul class="slides">
 			<li v-for="item in adBig">
         <div class="img">
-          <a href="javascript:;">
+          <a @click="_goProductsDetail(item.productId)">
             <img :src="item.img" alt="" />
           </a>
         </div>
@@ -49,6 +49,12 @@ export default {
           },0)
         }
       })
+    },
+    _goProductsDetail(productId){ // 跳转详情页
+
+      this.$store.commit("changeProductId", productId);
+      this.$router.push({path:"/productsDetail"})
+
     }
   }
 }

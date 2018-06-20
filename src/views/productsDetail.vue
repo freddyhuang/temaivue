@@ -1,11 +1,11 @@
 <template>
   <div>
 	<table cellpadding="0" cellspacing="0" class="detailsTop">
-		<tr>
-			<td width="360px">
-				<img style="width: 360px;height: 360px;" :src="template.img" alt="" />
+		<tr class="productDes">
+			<td>
+				<img class="productHeadImg" :src="template.img" alt="" />
 			</td>
-			<td width="640px">
+			<td width="640px" >
 				<div class="detailsMsg">
 					<p class="goodName">{{product.name }}</p>
 					<p class="goodMsg">{{product.keyword}}</p>

@@ -4,7 +4,7 @@
 	<div class="header">
 		<div class="header_div">
 			<div class="header_div_left">
-				<span>Hello，欢迎来到 <a href="javascript:;">吉特卖</a> </span>
+				<span>Hello，欢迎来到 <a href="javascript:;">淘特卖</a> </span>
 			<!--	<a onclick="return addFav();" href="" rel="sidebar" target=_self>收藏网站</a>-->
 			</div>
 			<div class="header_div_right">
@@ -14,7 +14,7 @@
 					<router-link to="/myorderHeader/myorder">
 						<span class="navtopItem" 	@click="closePop">我的特卖</span>
 					</router-link>
-					<span class="navtopItem" onclick="loginDiv.logout();">退出</span>
+					<span class="navtopItem" @click="_loginOut">退出</span>
 				</div>
 
 				<div v-else style="display:inline-block" class="loginIn">
@@ -32,13 +32,13 @@
 	          <dt>你好,{{userinfo.userName}}</dt>
 	          <dd 	@click="closePop"><router-link to="/myorderHeader/myorder">我的特卖</router-link></dd>
 	          <dd  	@click="showLogin">
-	            <a href="javascript:void(0)" @click="closePop">登录</a>
+	            <a href="javascript:void(0)" @click="closePop" >登录</a>
 	          </dd>
 	          <dd @click="showLogin">
-	            <a href="javascript:void(0)" @click="closePop">注册</a>
+	            <a href="javascript:void(0)" @click="closePop" >注册</a>
 	          </dd>
 	          <dd>
-	            <a href="javascript:void(0)">退出</a>
+	            <a href="javascript:void(0)" @click="_loginOut" >退出</a>
 	          </dd>
 	        </dl>
 	      </div>
@@ -60,14 +60,14 @@
 	</div>
 </div>
 <div class="md-overlay" v-show="overLayFlag" @click="closePop"></div>
-<login v-show="loginBoxFlag" @changeLoginBoxFlag='changeLoginBoxFlag($event)'></login>
+<login v-show="loginBoxFlag" @changeLoginBoxFlag='changeLoginBoxFlag($event)' @_updateUserinfo="_updateUserinfo"></login>
 </div>
   
 </template>
 
 <script>
 import login from '@/components/LoginAndRegister/login';
-import { updateUserinfo } from "api/userinfo";
+import { updateUserinfo , loginOut  } from "api/userinfo";
 export default {
   name: 'HelloWorld',
   data () {
@@ -111,6 +111,21 @@ created(){
 					let result = res.result;
 					this.userinfo = result;
 					this.loginFlage = true;
+				}
+			})
+		},
+		_loginOut(){ //退出
+			loginOut().then(res=>{
+				console.log(res)
+				res = JSON.parse(res)
+				console.log(res)
+				if(res.code == 200){
+					this.userinfo = {};
+				
+					this.closePop();
+					alert("退出成功")
+				}else{
+					alert(res.msg)
 				}
 			})
 		}

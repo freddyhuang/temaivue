@@ -67,11 +67,13 @@
 						    			<c:forEach var="gift" items="${order.asset.coupons}">
 							    			<c:set var="packamount" value="${packamount+gift.amount}"></c:set>
 						    			</c:forEach>
-						    			<c:choose>
+						    			<!-- <c:choose>
 						    				<c:when test="${packamount>0}">
 							    				<fmt:formatNumber value="${packamount }" pattern="#,###.##"></fmt:formatNumber>元
-						    				</c:when>
-						    				<c:otherwise>--</c:otherwise>
+						    				</c:when> -->
+											<span v-if="item.redbagId">{{item.redbagCount}}元</span>
+						    				<!-- <c:otherwise>--</c:otherwise> -->
+											<span v-else>--</span>
 						    			</c:choose>
 						    		</td>
 						    		<td style="color: red;"><!--支付金额-->
@@ -86,16 +88,19 @@
 										<span v-else-if="item.status == 2" style="color: #009900">支付失败</span>
 									</td>
 						    		<td style="border-right:1px solid #CCCCCC">
-							    		<c:if test="${2 == order.state.id || 3 == order.state.id}">
-							    			<c:if test="${0 < order.payment.remainTime }">
-												<a class="operate" style="background-color: #FF6600;" href="payorder.jspx?id=${order.id }">
-												<font style="color: white; font-weight: bold;line-height: 30px">付款</font></a>
-											</c:if>
-											<c:if test="${0 > order.payment.remainTime }">
+							    		<!-- <c:if test="${2 == order.state.id || 3 == order.state.id}">
+							    			<c:if test="${0 < order.payment.remainTime }"> -->
+											<nav v-if="item.status == 0">
+												<a class="operate" style="background-color: #FF6600;">
+													<font style="color: white; font-weight: bold;line-height: 30px">付款</font>
+												</a>
+											</nav>
+											<!-- </c:if> -->
+											<!-- <c:if test="${0 > order.payment.remainTime }">
 												<a class="operate" style="background-color: #ccc;">
 												<font style="color: white; font-weight: bold;line-height: 30px">付款</font></a>
 											</c:if>
-							    		</c:if>
+							    		</c:if> -->
 								    	<!-- <a class="operate" href="">取消</a><br/>
 								    	<a class="operate" href="">申请退款</a><br/>
 								   		<a class="operate" href="">重新发送短信</a><br/>
